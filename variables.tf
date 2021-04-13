@@ -1,8 +1,10 @@
 #------------------------------------------------------------------------------
 # Misc
 #------------------------------------------------------------------------------
-variable "name_prefix" {
+variable "instance_name" {
   description = "Name prefix for resources on AWS"
+  type = string
+  default = "test-instance"
 }
 
 #------------------------------------------------------------------------------
@@ -10,4 +12,5 @@ variable "name_prefix" {
 #------------------------------------------------------------------------------
 variable "region" {
   description = "AWS Region the infrastructure is hosted in"
+  default = "us-east-1"
 }
