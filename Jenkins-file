@@ -8,6 +8,8 @@ pipeline {
         string(name: 'version', defaultValue: '', description: 'Version variable to pass to Terraform')
         choice choices: ['AWS', 'AZURE', 'OracleCloud'], description: '''Select the cloud platform
         ''', name: 'Cloud'
+        choice choices: ['us-west-1', 'ap-south-1', 'eu-central-1'], description: '''Select the region
+        ''', name: 'Region'
         choice choices: ['t2.micro', 't2.small', 't2.medium'], description: '''Select the appropriate instance type. 
         For more information 
         https://aws.amazon.com/ec2/instance-types/ 
@@ -36,7 +38,7 @@ pipeline {
                 }
                 sh 'terraform init -input=false'
                 sh 'terraform workspace select ${environment}'
-                sh "terraform plan -input=false -out tfplan -var 'instance_type=${params.Configuration}' -var 'instance_name=${params.ServerName}' -var 'cloudprovider=${params.Cloud}' -var 'version=${params.version}' --var-file=environments/${params.environment}.tfvars"
+                sh "terraform plan -input=false -out tfplan -var 'region=${params.Region}' -var 'instance_type=${params.Configuration}' -var 'instance_name=${params.ServerName}' -var 'cloudprovider=${params.Cloud}'"
                 sh 'terraform show -no-color tfplan > tfplan.txt'
             }
         }
