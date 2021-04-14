@@ -1,3 +1,3 @@
 output "Server_ip" {
-  value = "${public_ip}"
+  value = "${aws_instance.this.private_ip}"
 }
