@@ -1,3 +1,3 @@
-output "Server_ip"" {
+output "Server_ip" {
   value = "${public_ip}"
 }
