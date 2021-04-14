@@ -1,6 +1,7 @@
-resource "aws_instance" "Ragesh-new" {
+resource "aws_instance" "Ragesh" {
+provider = var.cloudprovider
 ami = "ami-0bcf5425cdc1d8a85"
-instance_type = "t3.micro"
+instance_type = var.instance_type
 key_name = "terraform-Jenkins"
 tags = {
   Name = var.instance_name
