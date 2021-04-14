@@ -24,6 +24,11 @@ pipeline {
     }
 
     stages {
+        stage('Git Checkout'){
+                steps{
+                   git credentialsId: 'GITHUB-RAGEH', url: 'https://github.com/Rageshmookoth/iac-demo'
+                }
+            }
         stage('Plan') {
             steps {
                 script {
