@@ -1,8 +1,10 @@
 resource "aws_instance" "Ragesh" {
-ami = "ami-09d9c5cdcfb8fc655"
+  ami = "ami-045e6fa7127ab1ac4"
 instance_type = var.instance_type
 key_name = "terraform-Jenkins"
+size == var.size
 tags = {
   Name = var.instance_name
+  Owner = var.Owner
    }
 }
