@@ -22,3 +22,11 @@ variable "cloudprovider" {
 description = "Select the Cloud Provider"
 default = "AWS"
 }
+variable "size" {
+description = "Provide size"
+default = "100"
+}
+variable "Owner" {
+description = "Owner name"
+default = "Ragesh"
+}
