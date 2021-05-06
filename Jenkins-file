@@ -64,6 +64,11 @@ pipeline {
                 sh "terraform apply -input=false tfplan"
             }
         }
+        stage('output') {
+            steps {
+                sh "terraform output ip"
+            }
+        }
     }
 
     post {

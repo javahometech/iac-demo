@@ -1,0 +1,13 @@
+---
+- hosts: all
+become: yes
+become_user: root
+become_method: sudo
+tasks:
+    - name: Install nginx
+    apt:
+        name: nginx
+        state: latest
+    - name: Restart Nginx
+    service: name=nginx state=restarted
+    become: yes
