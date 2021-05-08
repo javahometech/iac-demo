@@ -7,6 +7,3 @@ tags = {
   Owner = var.Owner
    }
 }
-provisioner "local-exec" {
-  command = "sleep 120; ansible-playbook -i '${aws_instance.Ragesh.*.public_ip}' playbook.yml"
-}
