@@ -1,0 +1,2 @@
+[webserver]
+${web_public_ip}
