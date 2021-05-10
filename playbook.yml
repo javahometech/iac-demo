@@ -1,13 +1,13 @@
 ---
 - hosts: all
-become: yes
-become_user: root
-become_method: sudo
-tasks:
-    - name: Install nginx
-    apt:
-        name: nginx
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
         state: latest
-    - name: Restart Nginx
-    service: name=nginx state=restarted
-    become: yes
+    - name: Restart httpd
+      service: name=httpd state=restarted
+      become: yes
