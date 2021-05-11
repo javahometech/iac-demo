@@ -4,8 +4,8 @@ output "AWS-instance-Public-IP" {
 resource "local_file" "ansible_inventory_hosts" {
  content = templatefile("inventory.template",
  {
-  web_public_ip = aws_instance.Ragesh.public_ip,
-  web_id = aws_instance.Ragesh.id,
+  web_public_ip = "${aws_instance.Ragesh.public_ip}",
+  web_id = "${aws_instance.Ragesh.id}",
  }
  )
  filename = "inventory"
