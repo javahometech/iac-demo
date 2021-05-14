@@ -9,11 +9,3 @@ resource "local_file" "ansible_inventory_hosts" {
  )
  filename = "inventory"
 }
-resource "null_resource" "step3"  {
-depends_on = [
-     null_resource.step1,
-   ]
-provisioner "local-exec" {
-           command = "echo  ${aws_instance.web.public_ip}"
-       }
-}
