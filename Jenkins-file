@@ -10,6 +10,8 @@ pipeline {
         ''', name: 'Cloud'
         choice choices: ['us-west-1', 'ap-south-1', 'eu-central-1'], description: '''Select the region
         ''', name: 'Region'
+        choice choices: ['Ragesh', 'Moiz'], description: '''Server owner
+        ''', name: 'Owner'
         choice choices: ['t2.micro', 't2.small', 't2.medium'], description: '''Select the appropriate instance type. 
         For more information 
         https://aws.amazon.com/ec2/instance-types/ 
@@ -64,16 +66,19 @@ pipeline {
                 sh "terraform apply -input=false tfplan"
             }
         }
-        stage('output') {
+        stage('Output') {
             steps {
-                sh "export ip=`cat /tmp/inventory`"
+                sh "export ip=`cat inventory`"
             }
         }
+         
+        
     }
-
     post {
-        always {
-            archiveArtifacts artifacts: 'tfplan.txt'
-        }
+    success {
+        mail to: 'rageshmoorkoth@gmail.com',
+             subject: "Server build completed",
+             body: "Server name ${params.ServerName}"
     }
+}
 }
