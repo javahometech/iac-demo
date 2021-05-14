@@ -22,7 +22,7 @@ depends_on = [
     aws_instance.Ragesh,
 #     null_resource.step1,
 #    null_resource.wait,
-#   ]
+  ]
   # using ansible, declarative approach of configuration management
   provisioner "local-exec" {
     command ="ansible-playbook -i inventory  playbook.yml --private-key=${var.private_key}  --user ${var.ansible_user}"
