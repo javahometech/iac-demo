@@ -31,7 +31,7 @@ description = "Owner name"
 default = "Ragesh"
 }
 variable "private_key" {
-  default = "POC-STD-KEY-PAIR"
+  default = "POC-STD-KEY-PAIR.pem"
 }
 variable "ansible_user" {
   default = "ec2-user"

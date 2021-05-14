@@ -7,21 +7,24 @@ tags = {
   Owner = var.Owner
    }
 }
-resource "null_resource" "nulllocal1"  {
+resource "null_resource" "step1"  {
 provisioner "local-exec" {
-            command = "echo ${aws_instance.Ragesh.*.public_ip} > publicip.txt"
+            command = "echo ${aws_instance.Ragesh.public_ip} > publicip.txt"
     }
 }
-resource "null_resource" "nulllocal2" {
+resource "null_resource" "step2" {
 depends_on = [
      aws_instance.Ragesh,
-     null_resource.nulllocal1,
+     null_resource.step1,
     ]
   # using ansible, declarative approach of configuration management
   provisioner "local-exec" {
-    command ="ansible-playbook -i inventory  playbook.yml --private-key=POC-STD-KEY-PAIR  --user ec2-user"
+    command ="ansible-playbook -i inventory  playbook.yml --private-key=${var.private_key}  --user ${var.ansible_user}"
   }
 }
+
+
+
 
 
 ### https://a4ank.medium.com/aws-terraform-ansible-end-to-end-automation-9072f2ecf624
