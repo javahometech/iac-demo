@@ -9,7 +9,7 @@ tags = {
 }
 resource "null_resource" "step1"  {
 provisioner "local-exec" {
-            command = "echo ${aws_instance.Ragesh.public_ip} > publicip.txt"
+            command = "echo ${aws_instance.Ragesh.public_ip}"
     }
 }
 resource "null_resource" "step2" {
