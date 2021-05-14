@@ -30,3 +30,9 @@ variable "Owner" {
 description = "Owner name"
 default = "Ragesh"
 }
+variable "private_key" {
+  default = "POC-STD-KEY-PAIR"
+}
+variable "ansible_user" {
+  default = "ec2-user"
+}
