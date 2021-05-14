@@ -1,4 +1,4 @@
-output "AWS-instance-Public-IP" {
+output "ip" {
   value = "${aws_instance.Ragesh.public_ip}"
 }
 resource "local_file" "ansible_inventory_hosts" {
