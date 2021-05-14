@@ -12,10 +12,16 @@ provisioner "local-exec" {
             command = "echo ${aws_instance.Ragesh.public_ip}"
     }
 }
+resource "null_resource" "wait" {
+  provisioner "local-exec" {
+      command = "sleep 300 "
+  }
+}
 resource "null_resource" "step2" {
 depends_on = [
      aws_instance.Ragesh,
      null_resource.step1,
+     null_resource.wait,
     ]
   # using ansible, declarative approach of configuration management
   provisioner "local-exec" {
