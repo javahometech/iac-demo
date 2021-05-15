@@ -66,9 +66,9 @@ pipeline {
                 sh "terraform apply -input=false tfplan"
             }
         }
-        stage('Output') {
+        stage('Remove State file') {
             steps {
-                sh "export ip=`cat inventory`"
+                sh "rm -fr terraform.tfstate"
             }
         }
          
