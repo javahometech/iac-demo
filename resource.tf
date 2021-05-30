@@ -5,6 +5,8 @@ key_name = "POC-STD-KEY-PAIR"
 tags = {
   Name = var.instance_name
   Owner = var.Owner
+  Group = var.Group
+  Project = var.Project
    }
 }
 #resource "null_resource" "step1"  {
