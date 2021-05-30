@@ -40,3 +40,13 @@ variable "private_key" {
 variable "ansible_user" {
   default = "ec2-user"
 }
+variable "Group" {
+description = "Group Tag"
+type = string
+default = "No-Group"
+}
+variable "Project" {
+description = "Project  name Tag"
+type = string
+default = "No-Project"
+}
