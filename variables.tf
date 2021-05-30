@@ -18,6 +18,10 @@ variable "region" {
 description = "AWS Region the infrastructure is hosted in"
 default = "us-east-1"
 }
+variable "ami" {
+description = "AMI Image"
+default = "ami-045e6fa7127ab1ac4"
+}
 variable "cloudprovider" {
 description = "Select the Cloud Provider"
 default = "AWS"
