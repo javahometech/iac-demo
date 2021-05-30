@@ -12,6 +12,9 @@ pipeline {
         ''', name: 'Region'
         choice choices: ['Ragesh', 'Moiz'], description: '''Server owner
         ''', name: 'Owner'
+        choice choices: ['DEV-GROUP', 'IT-GROUP'], description: '''Server Group
+        ''', name: 'Group'
+        string defaultValue: '', description: 'Project', name: 'Project', trim: false
         choice choices: ['t2.micro', 't2.small', 't2.medium'], description: '''Select the appropriate instance type. 
         For more information 
         https://aws.amazon.com/ec2/instance-types/ 
@@ -40,7 +43,7 @@ pipeline {
                 //}
                 sh 'terraform init -input=false'
                 //sh 'terraform workspace select ${environment}'
-                sh "terraform plan -input=false -out tfplan -var 'region=${params.Region}' -var 'instance_type=${params.Configuration}' -var 'instance_name=${params.ServerName}'"
+                sh "terraform plan -input=false -out tfplan -var 'region=${params.Region}' -var 'instance_type=${params.Configuration}' -var 'instance_name=${params.ServerName}' -var 'Group=${params.Group}' -var 'Owner=${params.Owner}' -var 'Project=${params.Project}'"
                 sh 'terraform show -no-color tfplan > tfplan.txt'
             }
         }
