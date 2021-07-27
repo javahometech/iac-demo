@@ -1,9 +1,13 @@
-resource "aws_vpc" "main" {
-  cidr_block       = "10.0.0.0/16"
-  instance_tenancy = "default"
+provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_s3_bucket" "abilash-atlantis1" {
+  bucket = "abilash-atlantis1"
+  acl    = "private"
 
   tags = {
-    Name = "demo-vpc"
-    Purpose = "Jenkins Demo"
+    Name        = "abilash-atlantis1"
+    Environment = "Dev"
   }
 }
