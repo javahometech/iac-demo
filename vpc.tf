@@ -7,3 +7,6 @@ resource "aws_vpc" "main" {
     Purpose = "Jenkins Demo"
   }
 }
+demo for 26th
+demo for today
+apple good for health
