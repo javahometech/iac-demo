@@ -8,3 +8,7 @@ resource "aws_vpc" "main" {
   }
 }
 demo for 26th
+demo for today
+apple good for health
+demo for 26th
+i am working on devops
