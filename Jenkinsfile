@@ -1,28 +1,23 @@
-pipeline {
-  agent any
-
-  environment {
-    AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')
-    AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
-  }
-
-  stages {
-    stage('terraform init') {
-      steps {
-        sh 'terraform init -backend-config=backend.tf'
-      }
+pipeline{
+    agent any
+    tools {
+        terraform 'terraform-11'
     }
-
-    stage('terraform plan') {
-      steps {
-        sh 'terraform plan -var-file=terraform.tfvars -out=tfplan'
-      }
+    stages{
+        stage('Git Checkout'){
+            steps{
+                git credentialsId: '9701da43-e9d7-4164-9051-22fe12833a07', url: 'https://github.com/praveenchary17/iac-demo'
+            }
+        }
+        stage('Terraform Init'){
+            steps{
+                sh label: '', script: 'terraform init'
+            }
+        }
+        stage('Terraform Apply'){
+            steps{
+                sh label: '', script: 'terraform apply --auto-approve'
+            }
+        }
     }
-
-    stage('terraform apply') {
-      steps {
-        sh 'terraform apply -auto-approve tfplan'
-      }
-    }
-  }
 }
